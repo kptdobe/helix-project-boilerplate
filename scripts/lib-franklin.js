@@ -490,14 +490,14 @@ export async function loadBlock(block) {
  * @param {Element} main The container element
  */
 export async function loadBlocks(main) {
-  updateSectionsStatus(main);
+  // updateSectionsStatus(main);
   const blocks = [...main.querySelectorAll('div.block')];
   const observer = new IntersectionObserver(async (entries) => {
     const observed = entries.find((entry) => entry.isIntersecting);
     if (observed) {
       observer.disconnect();
-      await loadBlock(observed);
-      updateSectionsStatus(main);
+      await loadBlock(observed.target);
+      // updateSectionsStatus(main);
     }
   }, { threshold: 0 });
 
