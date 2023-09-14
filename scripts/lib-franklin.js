@@ -495,7 +495,6 @@ export async function loadBlocks(main) {
   const observer = new IntersectionObserver(async (entries) => {
     const observed = entries.find((entry) => entry.isIntersecting);
     if (observed) {
-      observer.disconnect();
       await loadBlock(observed.target);
       // updateSectionsStatus(main);
     }
